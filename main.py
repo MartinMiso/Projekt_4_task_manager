@@ -5,6 +5,15 @@ def hlavni_menu():
 
 def pridat_ukol():
     print("Přidám pak úkol")
+    ukol = (input("Zadej název nebo popis úkolu: "))
+    while True:
+        if ukol != "":
+            ukoly.append(ukol)
+            print(f"Úkol {ukol} byl přidán.")
+            continue
+        else:
+            print("Nezadal jsi název ani popis úkolu")
+
 
 
 def zobrazit_ukoly():
@@ -14,7 +23,7 @@ def odstranit_ukol():
     return print("Voe smažem úkoly")
 
 # Press the green button in the gutter to run the script.
-
+ukoly = []
 if __name__ == '__main__':
 
     while True:
@@ -33,6 +42,9 @@ if __name__ == '__main__':
         elif moznost == 4:
             print("Ukončuji program")
             break
+        elif moznost == 5:
+            print("Vypisuji úkoly")
+            print(ukoly)
         else:
             print("Nezadal jsi správnou hodnotu, zadej správnou volbu.")
 
