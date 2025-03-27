@@ -8,7 +8,7 @@ def pridat_ukol():
 
 
 def zobrazit_ukoly():
-    return print("Ukážu ti úkoly")
+    return print("Ukážu ti úkoly a pak něco dál")
 
 def odstranit_ukol():
     return print("Voe smažem úkoly")
