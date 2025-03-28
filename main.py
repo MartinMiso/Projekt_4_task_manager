@@ -1,23 +1,29 @@
 def hlavni_menu():
-    print("Správce úkolů - Hlavní menu")
+    nadpis = "Správce úkolů - Hlavní menu"
+    print(nadpis)
+    podtrzeni = (len(nadpis) * "-")
+    print(podtrzeni)
     print("1. Přidat úkol", "\n2. Zobrazit všechny úkoly", "\n3. Odstranit úkol", "\n4. Konec programu")
 
 
 def pridat_ukol():
-    print("Přidám pak úkol")
-    ukol = (input("Zadej název nebo popis úkolu: "))
+    print("Přidání úkolu:")
     while True:
-        if ukol != "":
-            ukoly.append(ukol)
-            print(f"Úkol {ukol} byl přidán.")
-            continue
+        ukol_nazev = (input("Zadej název úkolu: "))
+        ukol_popis = (input("Zadej popis úkolu: "))
+
+        if ukol_nazev or ukol_popis != "":
+            ukoly.append(ukol_nazev)
+            ukoly.append((ukol_popis))
+            print(f"Úkol '{ukol_nazev}' byl přidán.")
+            break
         else:
-            print("Nezadal jsi název ani popis úkolu")
+            print("Nezadal jsi název ani popis úkolu.")
 
 
 
 def zobrazit_ukoly():
-    return print("Ukážu ti úkoly a pak něco dál")
+    return print(f"Vypisuji úkoly \n{ukoly}")
 
 def odstranit_ukol():
     return print("Voe smažem úkoly")
@@ -42,9 +48,6 @@ if __name__ == '__main__':
         elif moznost == 4:
             print("Ukončuji program")
             break
-        elif moznost == 5:
-            print("Vypisuji úkoly")
-            print(ukoly)
         else:
             print("Nezadal jsi správnou hodnotu, zadej správnou volbu.")
 
