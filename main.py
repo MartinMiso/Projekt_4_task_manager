@@ -1,5 +1,5 @@
 """
-projekt_4.py: čtvrtý projekt do Engeto Online Python Akademie
+main.py: čtvrtý projekt do Engeto Online Python Akademie
 ##################
 ---TASK MANAGER---
 ##################
