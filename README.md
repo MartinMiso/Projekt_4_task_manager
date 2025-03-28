@@ -1,57 +1,47 @@
+# Správce úkolů
 
----
+Tento program je jednoduchý správce úkolů napsaný v Pythonu. Umožňuje uživateli:
 
-### Dokumentace (DOCUMENTATION.md)
+- **Přidat úkol:** Zadáním názvu a popisu úkolu se úkol přidá do seznamu s automaticky přiřazeným pořadovým číslem.
+- **Zobrazit úkoly:** Vypíše všechny aktuálně přidané úkoly v přehledné tabulce.
+- **Odstranit úkol:** Umožňuje odstranit úkol na základě čísla nebo názvu. Po odstranění dojde k přečíslování zbývajících úkolů.
+- **Ukončit program:** Při ukončení programu se uživatele zeptá, zda chce uložit seznam úkolů do souboru.
 
+## Jak program spustit
 
-# Dokumentace k úkolu ---TASK MANAGER---
+1. Ujistěte se, že máte nainstalovaný Python 3.x.
+2. Otevřete terminál nebo příkazový řádek.
+3. Spusťte program pomocí:
+   ```bash
+   python main.py
+Podle zobrazeného hlavního menu vyberte požadovanou možnost zadáním čísla (1-4).
 
-## Přehled
+Struktura programu
+hlavni_menu()
+Zobrazuje nadpis a možnosti hlavního menu.
 
-Tento program slouží jako jednoduchý správce úkolů, který umožňuje uživateli:
-- Přidávat nové úkoly s názvem a popisem.
-- Zobrazovat seznam všech úkolů ve formě přehledné tabulky.
-- Odstraňovat úkoly podle čísla nebo názvu s následným přečíslováním.
-- Ukládat seznam úkolů do textového souboru před ukončením programu.
+pridat_ukol()
+Umožňuje zadat název a popis úkolu. Úkol se uloží jako slovník do globálního seznamu ukoly s klíči "Číslo", "Název" a "Popis".
 
-## Popis funkcí
+zobrazit_ukoly()
+Vypíše všechny úkoly ve formě tabulky. Pokud nejsou žádné úkoly přidány, zobrazí se odpovídající zpráva.
 
-### hlavni_menu()
-- **Účel:** Zobrazení hlavního menu s nadpisem a volbami.
-- **Chování:** Vypíše nadpis, podtržení a nabídku možností (1. Přidat úkol, 2. Zobrazit všechny úkoly, 3. Odstranit úkol, 4. Konec programu).
+odstranit_ukol()
+Umožňuje odstranit úkol podle čísla nebo názvu. Při úspěšném odstranění dojde k přečíslování zbylých úkolů, aby pořadí odpovídalo jejich pozici v seznamu.
 
-### pridat_ukol()
-- **Účel:** Přidání nového úkolu.
-- **Vstupy:** Uživatel zadá název a popis úkolu.
-- **Zpracování:** Pokud alespoň jeden z údajů není prázdný, vytvoří se slovník s klíči `"Číslo"`, `"Název"` a `"Popis"` a úkol se přidá do seznamu `ukoly`.
-- **Výstup:** Informace o přidaném úkolu se vypíše na obrazovku.
+ulozeni_ukolu()
+Ukládá seznam úkolů do textového souboru s názvem zadaným uživatelem. Každý úkol se uloží na jeden řádek s formátovanými sloupci.
 
-### zobrazit_ukoly()
-- **Účel:** Zobrazení všech aktuálně přidaných úkolů.
-- **Zpracování:** Pokud je seznam `ukoly` prázdný, vypíše se zpráva o neexistenci úkolů. Jinak se vypíše formátovaná tabulka obsahující číslo, název a popis každého úkolu.
-- **Výstup:** Seznam úkolů ve formě tabulky.
+Ukončení programu
+Po výběru možnosti 4 se program zeptá, zda chcete uložit seznam úkolů do souboru:
 
-### odstranit_ukol()
-- **Účel:** Odstranění úkolu podle čísla nebo názvu.
-- **Vstupy:** Uživatel zadá číslo nebo název úkolu, který chce odstranit.
-- **Zpracování:** Prohledá se seznam úkolů a pokud se najde shoda, úkol se odstraní a následně se přečíslují zbývající úkoly.
-- **Výstup:** Zpráva o úspěšném odstranění nebo upozornění, že úkol nebyl nalezen.
+Zadáním a (ano) se spustí funkce ulozeni_ukolu(), kde zadáte název souboru. Seznam se uloží a program se ukončí.
 
-### ulozeni_ukolu()
-- **Účel:** Uložení aktuálního seznamu úkolů do souboru.
-- **Vstupy:** Globální proměnná `nazev_souboru` obsahující jméno souboru zadané uživatelem.
-- **Zpracování:** Otevře se textový soubor v režimu zápisu a každý úkol se zapíše na jeden řádek ve formátované podobě.
-- **Výstup:** Soubor s uloženým seznamem úkolů.
+Zadáním n (ne) se program ukončí bez uložení seznamu úkolů.
 
-## Hlavní smyčka programu
+Poznámky
+V případě zadání prázdného názvu i popisu se úkol nepřidá a uživatel bude vyzván k opakovanému zadání.
 
-- **Funkce:** Program běží ve smyčce, kde se opakovaně zobrazí hlavní menu a vyčká se na volbu uživatele.
-- **Volby:**
-  - **"1":** Spustí se funkce pro přidání úkolu.
-  - **"2":** Spustí se funkce pro zobrazení úkolů.
-  - **"3":** Spustí se funkce pro odstranění úkolu.
-  - **"4":** Vyvolá se vnořený cyklus, který se zeptá, zda má uživatel uložit seznam úkolů před ukončením programu. Podle odpovědi se seznam uloží či ne a následně se hlavní smyčka ukončí.
+Při odstraňování úkolu se nejprve ověří, zda zadaný úkol existuje. Pokud ne, zobrazí se chybová zpráva.
 
-## Závěr
-
-Tato dokumentace popisuje strukturu a funkčnost programu Správce úkolů. Program je jednoduchý na údržbu a rozšíření, a je vhodný pro základní správu úkolů s možností uložení do textového souboru.
+Program byl vyvinut s ohledem na jednoduchost a přehlednost, aby bylo snadné jej dále upravovat či rozšiřovat.
